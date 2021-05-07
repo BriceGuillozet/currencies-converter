@@ -1,5 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
-
 import React from 'react';
 import './styles.css';
 
@@ -18,14 +16,11 @@ class Converter extends React.Component {
   };
 
   toggle = () => {
-    console.log(this.state);
     this.setState({
       opened: !this.state.opened,
     });
   };
 
-  // eslint-disable-next-line padded-blocks
-  // eslint-disable-next-line arrow-body-style
   calculate = () => {
     const { baseAmount, selectedCurrency } = this.state;
     const currencyObject = currenciesList.find(
