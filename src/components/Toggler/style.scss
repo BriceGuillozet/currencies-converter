@@ -12,7 +12,8 @@
   background-color: vars.$color-light;
   color: vars.$color;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1em;
+  text-align: center;
   transition: transform vars.$transition-fast,
     background-color vars.$transition-fast;
 

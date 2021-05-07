@@ -5,7 +5,7 @@ import './style.scss';
 const Header = ({ baseAmount }) => (
   <div className="header">
     <h1 className="header-title">Converter</h1>
-    <p className="header-amount">{baseAmount} euro</p>
+    <p className="header-amount">{baseAmount} {baseAmount > 1 ? 'euros' : 'euro'}</p>
   </div>
 );
 

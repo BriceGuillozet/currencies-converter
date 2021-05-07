@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Toggler = ({ open, toggle }) => {
-  const cssClassNames = open ? 'toggle toggle--open' : 'toggle';
+  const cssClassNames = open ? 'toggle' : 'toggle toggle--open';
   return (
     <button
       className={cssClassNames}
       onClick={toggle}
       type="button"
     >
-      =
+      ||
     </button>
   );
 };

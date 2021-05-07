@@ -14,6 +14,8 @@ import currenciesList from '../../data/currencies';
 class Converter extends React.Component {
   state = {
     opened: true,
+    baseAmount: 1,
+    selectedCurrency: 'United States Dollar',
   }
 
   toggle = () => {
@@ -23,32 +25,30 @@ class Converter extends React.Component {
     });
   }
 
+  // eslint-disable-next-line padded-blocks
+  // eslint-disable-next-line arrow-body-style
+  calculate = () => {
+    const { baseAmount, selectedCurrency } = this.state;
+    const currencyObject = currenciesList.find(
+      (currencyInArray) => currencyInArray.name === selectedCurrency,
+    );
+    return baseAmount * currencyObject.rate;
+  }
+
   render() {
-    const { opened } = this.state;
+    const { opened, baseAmount, selectedCurrency } = this.state;
     return (
       <div className="converter">
-        <Header baseAmount={1} />
+        <Header baseAmount={baseAmount} />
         <Toggler
           open={opened}
           toggle={this.toggle}
         />
         {opened && <Currencies currenciesList={currenciesList} />}
-        <Amount value={1.09} currency="United States Dollar" />
+        <Amount value={this.calculate()} currency={selectedCurrency} />
       </div>
     );
   }
 }
 
-// // == Composant
-// const Converter = () => (
-//   <div className="converter">
-//     <Header baseAmount={1} />
-//     {
-//       true && <Currencies currenciesList={currenciesList} />
-//     }
-//     <Amount value={1.09} currency="United States Dollar" />
-//   </div>
-// );
-
-// == Export
 export default Converter;
