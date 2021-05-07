@@ -26,11 +26,11 @@ class Converter extends React.Component {
     const currencyObject = currenciesList.find(
       (currencyInArray) => currencyInArray.name === selectedCurrency,
     );
-    const calculated = (baseAmount * currencyObject.rate).toFixed(2);
+    const calculated = parseFloat((baseAmount * currencyObject.rate).toFixed(2), 10);
     if (Number.isNaN(calculated)) {
       return 0;
     }
-    return parseFloat(calculated, 10);
+    return calculated;
   };
 
   changeBaseValue = (newBaseValue) => {
