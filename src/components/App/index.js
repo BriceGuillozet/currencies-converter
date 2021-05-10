@@ -35,8 +35,9 @@ class Converter extends React.Component {
   };
 
   toggle = () => {
+    const { opened } = this.state;
     this.setState({
-      opened: !this.state.opened,
+      opened: !opened,
     });
   };
 
