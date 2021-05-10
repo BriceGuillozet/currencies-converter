@@ -18,6 +18,11 @@ class Converter extends React.Component {
 
   componentDidMount = () => {
     this.updatePageTitle();
+    document.addEventListener('keyup', (evt) => {
+      if (evt.key === 'Escape') {
+        this.toggle();
+      }
+    });
   };
 
   componentDidUpdate = () => {
@@ -73,7 +78,9 @@ class Converter extends React.Component {
       opened, baseAmount, selectedCurrency, filter,
     } = this.state;
 
-    const filteredCurrencies = currenciesList.filter((currencyObject) => currencyObject.name.toLowerCase().includes(filter.toLowerCase()));
+    const filteredCurrencies = currenciesList.filter(
+      (currencyObject) => currencyObject.name.toLowerCase().includes(filter.toLowerCase()),
+    );
 
     return (
       <div className="converter">

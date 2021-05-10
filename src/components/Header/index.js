@@ -9,7 +9,7 @@ const Header = ({ baseAmount, onInputChange }) => (
       <input
         className="header-input"
         type="number"
-        defaultValue={baseAmount}
+        value={baseAmount}
         onChange={(evt) => {
           const newValue = parseInt(evt.target.value, 10);
           onInputChange(newValue);
