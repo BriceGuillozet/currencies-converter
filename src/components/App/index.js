@@ -16,6 +16,19 @@ class Converter extends React.Component {
     filter: '',
   };
 
+  componentDidMount = () => {
+    this.updatePageTitle();
+  };
+
+  componentDidUpdate = () => {
+    this.updatePageTitle();
+  };
+
+  updatePageTitle = () => {
+    const { selectedCurrency } = this.state;
+    document.title = `Euro -> ${selectedCurrency}`;
+  };
+
   toggle = () => {
     this.setState({
       opened: !this.state.opened,
@@ -27,7 +40,10 @@ class Converter extends React.Component {
     const currencyObject = currenciesList.find(
       (currencyInArray) => currencyInArray.name === selectedCurrency,
     );
-    const calculated = parseFloat((baseAmount * currencyObject.rate).toFixed(2), 10);
+    const calculated = parseFloat(
+      (baseAmount * currencyObject.rate).toFixed(2),
+      10,
+    );
     if (Number.isNaN(calculated)) {
       return 0;
     }
@@ -57,9 +73,7 @@ class Converter extends React.Component {
       opened, baseAmount, selectedCurrency, filter,
     } = this.state;
 
-    const filteredCurrencies = currenciesList.filter(
-      (currencyObject) => currencyObject.name.toLowerCase().includes(filter.toLowerCase()),
-    );
+    const filteredCurrencies = currenciesList.filter((currencyObject) => currencyObject.name.toLowerCase().includes(filter.toLowerCase()));
 
     return (
       <div className="converter">

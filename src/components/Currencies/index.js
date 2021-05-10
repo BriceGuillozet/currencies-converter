@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Currencies = ({
-  currenciesList, selectedCurrency, onCurrencyChange, onFilterChange, filterText
+  currenciesList, selectedCurrency, onCurrencyChange, onFilterChange, filterText,
 }) => (
   <div className="currencies">
     <div className="currencies-title">
       <input
         type="text"
         className="currencies-search"
-        placeholder="Find Currency"
+        placeholder="Find currencies..."
         value={filterText}
         onChange={(evt) => {
           const inputText = evt.target.value;
