@@ -9,6 +9,16 @@
     font-size: 2em;
     font-weight: 700;
   }
+  &-input {
+    width: 100px;
+    background-color: vars.$color;
+    border: none;
+    color: vars.$color-light;
+    font-size:1.2em;
+    margin-right: 20px;
+    text-align: center;
+
+  }
   &-amount {
     font-size: 1.3em;
     margin-top: vars.$gutter;

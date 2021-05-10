@@ -12,7 +12,8 @@ class Converter extends React.Component {
   state = {
     opened: true,
     baseAmount: 1,
-    selectedCurrency: 'United States Dollar',
+    selectedCurrency: 'Australian Dollar',
+    filter: '',
   };
 
   toggle = () => {
@@ -45,16 +46,31 @@ class Converter extends React.Component {
     });
   };
 
+  handleFilterChange = (inputText) => {
+    this.setState({
+      filter: inputText,
+    });
+  };
+
   render() {
-    const { opened, baseAmount, selectedCurrency } = this.state;
+    const {
+      opened, baseAmount, selectedCurrency, filter,
+    } = this.state;
+
+    const filteredCurrencies = currenciesList.filter(
+      (currencyObject) => currencyObject.name.toLowerCase().includes(filter.toLowerCase()),
+    );
+
     return (
       <div className="converter">
         <Header baseAmount={baseAmount} onInputChange={this.changeBaseValue} />
         <Toggler open={opened} toggle={this.toggle} />
         {opened && (
           <Currencies
-            currenciesList={currenciesList}
+            selectedCurrency={selectedCurrency}
+            currenciesList={filteredCurrencies}
             onCurrencyChange={this.handleChangeCurrency}
+            onFilterChange={this.handleFilterChange}
           />
         )}
         <Amount value={this.calculate()} currency={selectedCurrency} />

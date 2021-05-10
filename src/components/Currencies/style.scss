@@ -10,6 +10,18 @@
     margin-top: vars.$gutter;
     font-weight: bold;
   }
+  &-search {
+    background-color: vars.$color-light;
+    padding: vars.$gutter;
+    margin-top: vars.$gutter;
+    width: 100%;
+    border: 1px solid vars.$color;
+    color: vars.$color;
+    font: inherit;
+    &::placeholder {
+      color: vars.$color-alt;
+    }
+  }
 }
 
 .currency {
@@ -18,9 +30,13 @@
   font-weight: 500;
   transition: background-color 1s;
   cursor: pointer;
+  &--active {
+    background-color: vars.$color-alt;
+    transition-duration: vars.$transition-fast;
+  }
   &:hover {
     background-color: vars.$color-alt;
     transition-duration: vars.$transition-fast;
   }
-
 }
+
