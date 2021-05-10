@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const Currencies = ({
-  currenciesList, selectedCurrency, onCurrencyChange, onFilterChange,
+  currenciesList, selectedCurrency, onCurrencyChange, onFilterChange, filterText
 }) => (
   <div className="currencies">
     <div className="currencies-title">
@@ -11,6 +11,7 @@ const Currencies = ({
         type="text"
         className="currencies-search"
         placeholder="Find Currency"
+        value={filterText}
         onChange={(evt) => {
           const inputText = evt.target.value;
           onFilterChange(inputText);
@@ -22,7 +23,9 @@ const Currencies = ({
         currenciesList.map((currencyObject) => (
           <li
             key={currencyObject.name}
-            className={currencyObject.name === selectedCurrency ? 'currency currency--active' : 'currency'}
+            className={
+              currencyObject.name === selectedCurrency ? 'currency currency--active' : 'currency'
+            }
             onClick={() => {
               onCurrencyChange(currencyObject.name);
             }}
@@ -44,6 +47,7 @@ Currencies.propTypes = {
   selectedCurrency: PropTypes.string.isRequired,
   onCurrencyChange: PropTypes.func.isRequired,
   onFilterChange: PropTypes.func.isRequired,
+  filterText: PropTypes.string.isRequired,
 };
 
 export default Currencies;

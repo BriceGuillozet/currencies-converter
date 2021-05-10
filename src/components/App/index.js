@@ -67,6 +67,7 @@ class Converter extends React.Component {
         <Toggler open={opened} toggle={this.toggle} />
         {opened && (
           <Currencies
+            filterText={filter}
             selectedCurrency={selectedCurrency}
             currenciesList={filteredCurrencies}
             onCurrencyChange={this.handleChangeCurrency}
